@@ -7,10 +7,12 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Assets {
     Texture snake;
     TextureRegion snakeRotate;
+    Texture apple;
     private float angle;
     void loadTextures() {
         snake = new Texture(Gdx.files.internal("sneak.png"));
         snakeRotate = new TextureRegion(snake);
+        apple = new Texture("apple.png");
     }
     public float getAngle() { return  angle; }
     public void  setAngle(float setAngle) { if ( setAngle >= 0) angle = setAngle;

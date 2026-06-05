@@ -1,11 +1,24 @@
 package org.example;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Renderer {
-    void render(Assets assets, SpriteBatch batch, Pysyc pysyc) {
+    int CELL_SIZE = 20;
+    void render(Assets assets, SpriteBatch batch, Pysyc pysyc, Levels levels, BitmapFont font) {
         batch.begin();
+        int[][] world = levels.getWorldMassive();
         batch.draw(assets.snakeRotate, pysyc.getX(), pysyc.getY(), 30, 30, 60, 60,  1, 1, assets.getAngle() );
+        for(int x = 0; x < 32; x++) {
+            for ( int y = 0; y < 32; y++) {
+                int screenX = x * CELL_SIZE;
+                int screenY = y * CELL_SIZE;
+                if ( world[x][y] == 2) {
+                    batch.draw(assets.apple, screenX,screenY, 64, 64);
+                }
+            }
+        }
+        pysyc.scoreLogic(levels, font, batch);
         batch.end();
     }
 }
