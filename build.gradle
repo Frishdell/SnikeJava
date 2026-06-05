@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+
+repositories {
+    mavenCentral()
+    // Правильные адреса репозиториев для LibGDX
+    maven { url "https://sonatype.org" }
+    maven { url "https://sonatype.org" }
+}
+
+ext {
+    gdxVersion = '1.13.1'
+}
+
+dependencies {
+    // Ядро LibGDX
+    implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+
+    // Настольный бэкенд LWJGL3 и нативные библиотеки
+    implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
+    implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+}
+
+// Указываем правильный путь к главному классу (с учетом пакета org.example)
+application {
+    mainClass = 'org.example.Main'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
