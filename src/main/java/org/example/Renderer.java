@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Renderer {
     int CELL_SIZE = 32;
-    void render(Assets assets, SpriteBatch batch, Pysyc pysyc, Levels levels, BitmapFont font) {
+    void render(Assets assets, SpriteBatch batch, Pysyc pysyc, Levels levels, BitmapFont font, Client client) {
         batch.begin();
         int[][] world = levels.getWorldMassive();
         batch.draw(assets.snakeRotate, pysyc.getX(), pysyc.getY(), 30, 30, 60, 60,  1, 1, assets.getAngle() );
