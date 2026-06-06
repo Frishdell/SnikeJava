@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Renderer {
-    int CELL_SIZE = 20;
+    int CELL_SIZE = 32;
     void render(Assets assets, SpriteBatch batch, Pysyc pysyc, Levels levels, BitmapFont font) {
         batch.begin();
         int[][] world = levels.getWorldMassive();
@@ -14,7 +14,7 @@ public class Renderer {
                 int screenX = x * CELL_SIZE;
                 int screenY = y * CELL_SIZE;
                 if ( world[x][y] == 2) {
-                    batch.draw(assets.apple, screenX,screenY, 64, 64);
+                    batch.draw(assets.apple, screenX,screenY, 32, 32);
                 }
             }
         }

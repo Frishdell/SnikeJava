@@ -23,7 +23,6 @@ public class Client extends ApplicationAdapter {
         assets.loadTextures();
 
         font = new BitmapFont();
-        levels.world();
     }
     @Override
     public void render() {
