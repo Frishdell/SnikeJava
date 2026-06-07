@@ -12,7 +12,7 @@ public class Levels {
 
     void spawnApple() {
         appleX = (int) (Math.random() * 32);
-        appleY = (int) (Math.random() * 32);
+        appleY = (int) (Math.random() * 22);
         world[appleX][appleY] = 2;
     }
 

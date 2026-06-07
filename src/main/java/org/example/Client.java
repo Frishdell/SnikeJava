@@ -49,7 +49,7 @@ public class Client extends ApplicationAdapter {
 
     @Override
     public void render() {
-        com.badlogic.gdx.utils.ScreenUtils.clear(0f, 0f, 0f, 1f);
+        com.badlogic.gdx.utils.ScreenUtils.clear(0f, 0f, 100f, 1f);
         pysyc.input(assets);
         renderer.render(assets, batch, pysyc, levels, font, this);
         saveGame();

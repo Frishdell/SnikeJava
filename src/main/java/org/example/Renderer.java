@@ -7,6 +7,7 @@ public class Renderer {
     int CELL_SIZE = 32;
     void render(Assets assets, SpriteBatch batch, Pysyc pysyc, Levels levels, BitmapFont font, Client client) {
         batch.begin();
+        batch.draw(assets.gameStole, 0,0,1270,720);
         int[][] world = levels.getWorldMassive();
         batch.draw(assets.snakeRotate, pysyc.getX(), pysyc.getY(), 30, 30, 60, 60,  1, 1, assets.getAngle() );
         for(int x = 0; x < 32; x++) {
