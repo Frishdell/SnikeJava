@@ -10,7 +10,18 @@ public class Pysyc {
     private int sneakX = 100;
     private int sneakY = 100;
     private int score = 0;
-    private String scoreToRender = "Score: 0"; // Изначально просто строка
+    private boolean isMenuOpen;
+
+    private String scoreToRender = "Score: 0";
+
+    public class Money {
+        private int money;
+        void moneyPhysyc() {
+            money = (score * 2) + 4 * 6;
+        }
+        public int getMoney() { return  money;}
+        public void setMoney(int setMoney ) { money = setMoney;}
+    }
 
     private Rectangle sneak = new Rectangle(100, 100, 32, 32);
     private Rectangle apple = new Rectangle(0, 0, 32, 32);
@@ -45,7 +56,7 @@ public class Pysyc {
         }
     }
 
-    void scoreLogic(Levels levels, BitmapFont font, SpriteBatch batch) {
+    void scoreLogic(Levels levels) {
         sneak.setPosition(sneakX, sneakY);
 
         int applePixelX = levels.getAppleX() * 32;
@@ -56,18 +67,16 @@ public class Pysyc {
 
         if (sneak.overlaps(apple)) {
             score++;
+            scoreToRender = "Score: " + score;
             world[levels.getAppleX()][levels.getAppleY()] = 0;
             levels.spawnApple();
         }
 
         // ИСПРАВЛЕНО: Перенесли обновление строки СЮДА (вне блока if).
         // Теперь счетчик на экране будет сразу показывать то, что прилетело из базы!
-        scoreToRender = "Score: " + score;
-
-        // Отрисовка счета
-        font.getData().setScale(2f);
-        font.draw(batch, scoreToRender, 30, 680);
     }
+
+    public String getScoreToRender() { return scoreToRender;}
 
     public int getScore() { return score; }
 
@@ -76,6 +85,20 @@ public class Pysyc {
         if (setScore >= 0) {
             score = setScore;
         }
+    }
+
+    public void goMenuScene(SpriteBatch batch, Assets assets) {
+        if ( MenuScene() ) {
+            batch.draw(assets.MenuScene, 0, -60, 1270, 900);
+        }
+    }
+
+    private Boolean MenuScene() {
+        if ( Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+            isMenuOpen = !isMenuOpen;
+        }
+
+        return isMenuOpen;
     }
 
     public float getX() { return sneakX; }

@@ -9,10 +9,12 @@ public class Assets {
     TextureRegion snakeRotate;
     Texture apple;
     Texture gameStole;
+    Texture MenuScene;
     private float angle;
     void loadTextures() {
         snake = new Texture(Gdx.files.internal("sneak.png"));
         snakeRotate = new TextureRegion(snake);
+        MenuScene = new Texture("MenuScene.png");
         apple = new Texture("apple.png");
         gameStole = new Texture("gameStole.png");
     }

@@ -5,8 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Renderer {
     int CELL_SIZE = 32;
-    void render(Assets assets, SpriteBatch batch, Pysyc pysyc, Levels levels, BitmapFont font, Client client) {
-        batch.begin();
+    void render(Assets assets, SpriteBatch batch, Pysyc pysyc, Levels levels, BitmapFont font, Pysyc.Money money) {
         batch.draw(assets.gameStole, 0,0,1270,720);
         int[][] world = levels.getWorldMassive();
         batch.draw(assets.snakeRotate, pysyc.getX(), pysyc.getY(), 30, 30, 60, 60,  1, 1, assets.getAngle() );
@@ -19,7 +18,11 @@ public class Renderer {
                 }
             }
         }
-        pysyc.scoreLogic(levels, font, batch);
-        batch.end();
+        font.draw(batch, "Money: " + money.getMoney(), 30, 630);
+        font.draw(batch, pysyc.getScoreToRender(), 30, 680);
+
+        // Отрисовка счета
+
+        font.getData().setScale(2f);
     }
 }
